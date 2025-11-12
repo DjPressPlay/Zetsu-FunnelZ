@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Landing Funnel Builder</title>
-  <link rel="icon" type="image/png" href="/METAMEDIA/zetsu_cover-r22.png" />
+  <title>Mini Funnel Builder</title>
   <style>
     body {
       margin: 0;
@@ -30,14 +29,14 @@
     #start-screen {
       text-align: center;
       z-index: 10;
+      color: #fff;
     }
 
     .logo-wrapper {
       display: inline-block;
       border: 5px solid cyan;
       border-radius: 8px;
-      padding: 0;
-      margin: 0 auto 30px;
+      margin-bottom: 30px;
       box-shadow: 0 0 20px rgba(0,255,255,0.6), inset 0 0 20px rgba(0,255,255,0.2);
       background: rgba(0,0,0,0.3);
     }
@@ -49,6 +48,16 @@
       margin: 0;
     }
 
+    input {
+      padding: 12px 15px;
+      font-size: 16px;
+      border: 3px solid cyan;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      width: 250px;
+      text-align: center;
+    }
+
     #start-btn {
       background: linear-gradient(135deg, #FFD700, #FFA500);
       border: 5px solid cyan;
@@ -57,47 +66,26 @@
       font-size: 20px;
       padding: 15px 50px;
       border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,255,255,0.6), inset 0 0 20px rgba(0,255,255,0.2);
       cursor: pointer;
       transition: all 0.3s ease;
-      display: block;
-      margin: 0 auto;
     }
 
     #start-btn:hover {
       background: linear-gradient(135deg, #FFA500, #FFD700);
-      box-shadow: 0 0 25px rgba(0,255,255,0.8), inset 0 0 25px rgba(0,255,255,0.3);
       transform: scale(1.05);
     }
 
-    .bubble, .small-bubble {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-      box-shadow: 0 0 10px rgba(0,255,255,0.2);
-      animation: floatUp linear infinite;
-    }
-
-    .bubble {
-      width: 120px; height: 120px;
-      background: rgba(0,255,255,0.15);
-      border: 2px solid rgba(0,255,255,0.5);
-      display: flex; align-items: center; justify-content: center;
-      color: cyan; font-size: 11px; text-align: center;
-      line-height: 1.3; overflow: hidden;
-    }
-
-    .small-bubble {
-      background: rgba(0,255,255,0.08);
-      border: 1px solid rgba(0,255,255,0.3);
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100vh) translateX(var(--drift)); opacity: 0; }
+    #name-card {
+      margin-top: 20px;
+      padding: 20px;
+      border: 3px solid cyan;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.4);
+      display: inline-block;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 0 15px cyan;
+      min-width: 200px;
     }
 
   </style>
@@ -107,45 +95,39 @@
     <div class="logo-wrapper">
       <img src="/METAMEDIA/Myth-Ledger-League-of-Legends-11-10-2025.gif" alt="Myth Ledger" />
     </div>
+
+    <input type="text" id="screen-name" placeholder="Enter your screen name" maxlength="20" />
+    <br/>
     <button id="start-btn">Start</button>
+
+    <div id="name-card" style="display:none;"></div>
   </div>
 
   <script>
-    // Local "signup" save
     const startBtn = document.getElementById('start-btn');
+    const screenNameInput = document.getElementById('screen-name');
+    const nameCard = document.getElementById('name-card');
 
     startBtn.addEventListener('click', () => {
-      // Save a flag locally
+      const name = screenNameInput.value.trim();
+      if(!name) {
+        alert('Please enter a screen name!');
+        return;
+      }
+
+      // Save locally
+      localStorage.setItem('screenName', name);
       localStorage.setItem('signedUp', 'true');
-      // Redirect to next page (info/example)
-      window.location.href = '/info.html';
-    });
 
-    // Optional: Floating small bubbles for style
-    function createSmallBubble() {
-      const bubble = document.createElement('div');
-      bubble.className = 'small-bubble';
-      const size = 15 + Math.random() * 35;
-      const startX = Math.random() * window.innerWidth;
-      const drift = (Math.random() - 0.5) * 150;
-      const duration = 10 + Math.random() * 8;
-      const delay = Math.random() * 3;
+      // Show name card before redirect
+      nameCard.textContent = `Welcome, ${name}!`;
+      nameCard.style.display = 'inline-block';
 
-      bubble.style.width = bubble.style.height = `${size}px`;
-      bubble.style.left = `${startX}px`;
-      bubble.style.setProperty('--drift', `${drift}px`);
-      bubble.style.animationDuration = `${duration}s`;
-      bubble.style.animationDelay = `${delay}s`;
-
-      document.body.appendChild(bubble);
-
+      // Redirect after 1.5s
       setTimeout(() => {
-        bubble.remove();
-        createSmallBubble();
-      }, (duration + delay) * 1000);
-    }
-
-    for(let i=0;i<15;i++) createSmallBubble();
+        window.location.href = '/info.html';
+      }, 1500);
+    });
   </script>
 </body>
 </html>
