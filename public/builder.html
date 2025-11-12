@@ -7,92 +7,213 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #000000;
+      color: #2d3748;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
     header {
-      background: linear-gradient(90deg, #0ff, #0aa);
+      background: radial-gradient(circle at center, #1a1a1a, #000);
       padding: 20px;
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,255,255,0.3);
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(0, 255, 225, 0.15);
+      border-bottom: 2px solid #00ffe1;
     }
 
     nav {
-      background: #000;
+      background: #ffffff;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       gap: 30px;
-      padding: 15px 0;
-      box-shadow: 0 2px 8px rgba(0,255,255,0.2);
+      padding: 15px 30px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid #e2e8f0;
     }
 
     nav a {
-      color: cyan;
+      color: #667eea;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       font-size: 16px;
-      transition: color 0.3s;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #0ff;
+      color: #764ba2;
     }
 
     main {
       flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 40px 20px;
     }
 
     .builder-container {
-      background: rgba(0,0,0,0.6);
-      border: 3px solid cyan;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 12px;
       padding: 40px;
-      max-width: 500px;
+      max-width: 900px;
       width: 100%;
-      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+      margin: 0 auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
 
     h2 {
-      color: #0ff;
+      color: #2d3748;
       margin-bottom: 30px;
       text-align: center;
       font-size: 24px;
+      font-weight: 600;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+      padding: 25px;
+      background: #f7fafc;
+      border-radius: 8px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .form-section h3 {
+      color: #4a5568;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .compact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .compact-field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .compact-field label {
+      margin-bottom: 6px;
+    }
+
+    .compact-field input,
+    .compact-field textarea {
+      margin-bottom: 0;
     }
 
     label {
       display: block;
-      margin-bottom: 10px;
-      color: cyan;
-      font-weight: bold;
+      margin-bottom: 8px;
+      color: #4a5568;
+      font-weight: 600;
+      font-size: 14px;
     }
 
-    input[type="text"] {
+    label span {
+      color: #718096;
+      font-weight: normal;
+      font-size: 12px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    textarea,
+    select {
       width: 100%;
       padding: 12px;
-      font-size: 16px;
-      border: 2px solid cyan;
+      font-size: 14px;
+      border: 2px solid #cbd5e0;
       border-radius: 8px;
-      background: rgba(0,0,0,0.3);
-      color: #fff;
+      background: #ffffff;
+      color: #2d3748;
       margin-bottom: 20px;
       box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input[type="text"]:focus {
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
-      border-color: #0ff;
-      box-shadow: 0 0 10px rgba(0,255,255,0.5);
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .video-container-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .video-input {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-item {
+      margin-bottom: 0;
+      padding: 15px;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    .testimonial-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .testimonial-item label {
+      font-size: 13px;
+    }
+
+    .testimonial-item textarea {
+      min-height: 80px;
+    }
+
+    .template-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .template-option {
+      padding: 20px;
+      border: 2px solid #cbd5e0;
+      border-radius: 8px;
+      background: #ffffff;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .template-option:hover {
+      background: #f7fafc;
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .template-option.selected {
+      background: #edf2f7;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     }
 
     .button-group {
@@ -105,36 +226,37 @@
       flex: 1;
       padding: 15px;
       font-size: 16px;
-      font-weight: bold;
-      border: 3px solid cyan;
+      font-weight: 600;
+      border: 2px solid #667eea;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    #submit-btn {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      color: #000;
-    }
-
-    #submit-btn:hover {
-      background: linear-gradient(135deg, #FFA500, #FFD700);
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(255,215,0,0.6);
+      transition: all 0.2s ease;
     }
 
     #preview-btn {
-      background: rgba(0,255,255,0.1);
-      color: cyan;
+      background: #ffffff;
+      color: #667eea;
     }
 
     #preview-btn:hover {
-      background: rgba(0,255,255,0.2);
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0,255,255,0.6);
+      background: #f7fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
     }
 
-    #preview-btn:disabled {
+    #publish-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    #publish-btn:hover {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    button:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none;
@@ -142,17 +264,51 @@
 
     .info-text {
       text-align: center;
-      color: #aaa;
+      color: #718096;
       font-size: 14px;
       margin-top: 20px;
     }
 
     footer {
-      background: #000;
       text-align: center;
-      padding: 20px;
-      border-top: 2px solid cyan;
-      font-size: 14px;
+      padding: 1rem 1rem;
+      font-size: .75rem;
+      color: #777;
+      border-top: 2px solid #fff;
+      background: #0a0a0a;
+    }
+
+    footer p {
+      margin: 0;
+      line-height: 1;
+      display: inline;
+    }
+
+    footer a {
+      color: #00ffe1;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .video-container-group {
+        grid-template-columns: 1fr;
+      }
+
+      .template-selection {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .compact-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -175,74 +331,296 @@
       <h2>Create Your Funnel</h2>
       
       <form id="funnel-form">
-        <label for="funnel-name">Funnel Name</label>
-        <input 
-          type="text" 
-          id="funnel-name" 
-          placeholder="Enter your funnel name" 
-          maxlength="50"
-          required
-        />
+        
+        <div class="form-section">
+          <div class="compact-row">
+            <div class="compact-field">
+              <label for="product-name">Product Name</label>
+              <input 
+                type="text" 
+                id="product-name" 
+                name="productName"
+                placeholder="Enter your product name" 
+                maxlength="100"
+                required
+              />
+            </div>
+            <div class="compact-field">
+              <label for="ad-reference">Ad Reference <span>(Optional)</span></label>
+              <input 
+                type="text" 
+                id="ad-reference" 
+                name="adReference"
+                placeholder="Reference to your ad campaign" 
+                maxlength="100"
+              />
+            </div>
+          </div>
 
-        <div class="button-group">
-          <button type="submit" id="submit-btn">Save Funnel</button>
-          <button type="button" id="preview-btn" disabled>Preview</button>
+          <label for="product-description">Product Description</label>
+          <textarea 
+            id="product-description" 
+            name="productDescription"
+            placeholder="Describe your product and its benefits"
+            maxlength="1000"
+            required
+          ></textarea>
         </div>
 
-        <p class="info-text">Enter a name for your funnel and click Save to continue</p>
+        <div class="form-section">
+          <div class="compact-row">
+            <div class="compact-field">
+              <label for="signup-link">Sign-up Link</label>
+              <input 
+                type="url" 
+                id="signup-link" 
+                name="signupLink"
+                placeholder="https://example.com/signup" 
+                required
+              />
+            </div>
+            <div class="compact-field">
+              <label for="price">Price</label>
+              <input 
+                type="text" 
+                id="price" 
+                name="price"
+                placeholder="$99 or Free" 
+                maxlength="50"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label>Testimonials</label>
+          <div id="testimonials-container">
+            <div class="compact-row">
+              <div class="testimonial-item" data-index="0">
+                <label for="testimonial-media-0">Testimonial 1 - Image/Video URL</label>
+                <input 
+                  type="url" 
+                  id="testimonial-media-0"
+                  name="testimonial1Media"
+                  placeholder="https://example.com/image.jpg or https://youtube.com/watch?v=..." 
+                  required
+                />
+                <label for="testimonial-desc-0">Testimonial 1 - Description</label>
+                <textarea 
+                  id="testimonial-desc-0"
+                  name="testimonial1Description"
+                  placeholder="Customer testimonial text"
+                  maxlength="500"
+                  required
+                ></textarea>
+              </div>
+              <div class="testimonial-item" data-index="1">
+                <label for="testimonial-media-1">Testimonial 2 - Image/Video URL</label>
+                <input 
+                  type="url" 
+                  id="testimonial-media-1"
+                  name="testimonial2Media"
+                  placeholder="https://example.com/image.jpg or https://youtube.com/watch?v=..." 
+                  required
+                />
+                <label for="testimonial-desc-1">Testimonial 2 - Description</label>
+                <textarea 
+                  id="testimonial-desc-1"
+                  name="testimonial2Description"
+                  placeholder="Customer testimonial text"
+                  maxlength="500"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label>Two Tutorial Video Containers</label>
+          <div class="compact-row">
+            <div class="compact-field">
+              <label for="video-1">Tutorial Video 1 URL</label>
+              <input 
+                type="url" 
+                id="video-1" 
+                name="video1"
+                placeholder="https://youtube.com/watch?v=..." 
+                required
+              />
+            </div>
+            <div class="compact-field">
+              <label for="video-2">Tutorial Video 2 URL</label>
+              <input 
+                type="url" 
+                id="video-2" 
+                name="video2"
+                placeholder="https://youtube.com/watch?v=..." 
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="compact-row">
+            <div class="compact-field">
+              <label for="schedule-call">Schedule a Call / Join TG <span>(Optional)</span></label>
+              <input 
+                type="url" 
+                id="schedule-call" 
+                name="scheduleCall"
+                placeholder="https://example.com/schedule" 
+              />
+            </div>
+            <div class="compact-field">
+              <label for="livestream-event">Join Live Stream Event (Book Spot)</label>
+              <input 
+                type="url" 
+                id="livestream-event" 
+                name="livestreamEvent"
+                placeholder="https://example.com/livestream" 
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label for="signup-link-repeat">Sign-up (repeat CTA)</label>
+          <input 
+            type="url" 
+            id="signup-link-repeat" 
+            name="signupLinkRepeat"
+            placeholder="https://example.com/signup" 
+            required
+          />
+
+          <label for="bonus-confirmation">Price / Bonus Confirmation</label>
+          <textarea 
+            id="bonus-confirmation" 
+            name="bonusConfirmation"
+            placeholder="Confirm pricing and any bonuses included"
+            maxlength="500"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-section">
+          <label>Pre-made Templates for instant funnel creation</label>
+          <div class="template-selection">
+            <div class="template-option" data-template="classic">
+              <div>Classic</div>
+            </div>
+            <div class="template-option" data-template="modern">
+              <div>Modern</div>
+            </div>
+            <div class="template-option" data-template="minimal">
+              <div>Minimal</div>
+            </div>
+            <div class="template-option" data-template="vibrant">
+              <div>Vibrant</div>
+            </div>
+          </div>
+          <input type="hidden" id="template" name="template" value="classic" />
+        </div>
+
+        <div class="button-group">
+          <button type="button" id="preview-btn">Preview Button: shows exactly how the funnel will appear</button>
+          <button type="submit" id="publish-btn">Publish Button: generates a live site ready for promotion</button>
+        </div>
+
+        <p class="info-text">Fill out all required fields to preview and publish your funnel</p>
       </form>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Artworqq Kevin J Suber Jr
+    <p>© 2025 Zetsumetsu Corporation™ | All systems, products, and materials are the property of Zetsumetsu Corporation. Unauthorized use or reproduction is prohibited. | Zetsumetsu EOe™ | Artworqq Kevin Suber |
+         <br> <a href="https://sporez.netlify.app/" target="_blank">Spore'z Network</a> | <a href="#">SignalZ</a> | <a href="#">Z-Auth</a></p>
   </footer>
 
   <script>
     const form = document.getElementById('funnel-form');
-    const funnelNameInput = document.getElementById('funnel-name');
-    const submitBtn = document.getElementById('submit-btn');
     const previewBtn = document.getElementById('preview-btn');
+    const publishBtn = document.getElementById('publish-btn');
+    const templateOptions = document.querySelectorAll('.template-option');
+    const templateInput = document.getElementById('template');
 
-    const savedFunnelName = localStorage.getItem('funnelName');
-    if (savedFunnelName) {
-      funnelNameInput.value = savedFunnelName;
-      previewBtn.disabled = false;
+    templateOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        templateOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        templateInput.value = option.dataset.template;
+      });
+    });
+
+    templateOptions[0].classList.add('selected');
+
+    function loadFunnelData() {
+      const savedData = localStorage.getItem('funnelData');
+      if (savedData) {
+        try {
+          const data = JSON.parse(savedData);
+          Object.keys(data).forEach(key => {
+            const input = form.querySelector(`[name="${key}"]`);
+            if (input) {
+              input.value = data[key];
+            }
+          });
+          
+          if (data.template) {
+            templateOptions.forEach(opt => {
+              if (opt.dataset.template === data.template) {
+                opt.classList.add('selected');
+              } else {
+                opt.classList.remove('selected');
+              }
+            });
+          }
+        } catch (e) {
+          console.error('Error loading saved data:', e);
+        }
+      }
     }
+
+    function saveFunnelData() {
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+      localStorage.setItem('funnelData', JSON.stringify(data));
+    }
+
+    loadFunnelData();
+
+    form.addEventListener('input', () => {
+      saveFunnelData();
+    });
+
+    previewBtn.addEventListener('click', () => {
+      saveFunnelData();
+      window.location.href = 'preview.html';
+    });
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      const funnelName = funnelNameInput.value.trim();
-      
-      if (!funnelName) {
-        alert('Please enter a funnel name!');
-        return;
-      }
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
 
-      localStorage.setItem('funnelName', funnelName);
+      localStorage.setItem('funnelData', JSON.stringify(data));
+      localStorage.setItem('funnelPublished', 'true');
+      localStorage.setItem('funnelPublishDate', new Date().toISOString());
       
-      previewBtn.disabled = false;
+      alert(`Funnel "${data.productName}" published successfully! Your funnel is now live and ready for promotion.`);
       
-      alert(`Funnel "${funnelName}" saved successfully!`);
-    });
-
-    previewBtn.addEventListener('click', () => {
-      const funnelName = localStorage.getItem('funnelName');
-      
-      if (funnelName) {
-        window.location.href = 'preview.html';
-      } else {
-        alert('Please save your funnel first!');
-      }
-    });
-
-    funnelNameInput.addEventListener('input', () => {
-      if (funnelNameInput.value.trim()) {
-        previewBtn.disabled = false;
-      } else {
-        previewBtn.disabled = true;
-      }
+      window.location.href = 'preview.html';
     });
   </script>
 
