@@ -14,6 +14,29 @@
       overflow-x: hidden;
     }
 
+    /* === TOP BAR (right aligned) === */
+    .topbar {
+      width: 100%;
+      background: #000;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      color: #00ffe1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      padding: 0.7rem 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .topbar a {
+      color: #00ffe1;
+      text-decoration: none;
+      transition: opacity .2s ease;
+    }
+    .topbar a:hover {
+      opacity: .7;
+    }
+
     header {
       text-align: center;
       padding: 3rem 1rem 2rem;
@@ -158,10 +181,18 @@
       .hero-input-group input {
         width: 100%;
       }
+      .topbar { justify-content: center; flex-wrap: wrap; gap: 1rem; font-size: .8rem; }
     }
   </style>
 </head>
 <body>
+
+  <div class="topbar">
+    <a href="#">How to</a>
+    <a href="#">Builder</a>
+    <a href="#">Zetsu Apps</a>
+    <a href="#">Try For Free</a>
+  </div>
 
   <header>
     <h1>Zetsu Infinity Access</h1>
@@ -176,7 +207,6 @@
   </header>
 
   <section class="features" id="start">
-      
     <div class="feature">
       <h3>SignalZ Integration</h3>
       <p>Access the wall, drop your signal, and generate engagement through your unique tag system.</p>
