@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funnel Builder</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0ff, #0aa);
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,255,255,0.3);
+    }
+
+    nav {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgba(0,255,255,0.2);
+    }
+
+    nav a {
+      color: cyan;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0ff;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .builder-container {
+      background: rgba(0,0,0,0.6);
+      border: 3px solid cyan;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,255,255,0.4);
+    }
+
+    h2 {
+      color: #0ff;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: cyan;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid cyan;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #0ff;
+      box-shadow: 0 0 10px rgba(0,255,255,0.5);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    button {
+      flex: 1;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 3px solid cyan;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #submit-btn {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+    }
+
+    #submit-btn:hover {
+      background: linear-gradient(135deg, #FFA500, #FFD700);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,215,0,0.6);
+    }
+
+    #preview-btn {
+      background: rgba(0,255,255,0.1);
+      color: cyan;
+    }
+
+    #preview-btn:hover {
+      background: rgba(0,255,255,0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,255,255,0.6);
+    }
+
+    #preview-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .info-text {
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid cyan;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Funnel Builder
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="info.html">Info</a>
+    <a href="builder.html">Builder</a>
+    <a href="preview.html">Preview</a>
+    <a href="affiliate.html">Affiliate</a>
+  </nav>
+
+  <main>
+    <div class="builder-container">
+      <h2>Create Your Funnel</h2>
+      
+      <form id="funnel-form">
+        <label for="funnel-name">Funnel Name</label>
+        <input 
+          type="text" 
+          id="funnel-name" 
+          placeholder="Enter your funnel name" 
+          maxlength="50"
+          required
+        />
+
+        <div class="button-group">
+          <button type="submit" id="submit-btn">Save Funnel</button>
+          <button type="button" id="preview-btn" disabled>Preview</button>
+        </div>
+
+        <p class="info-text">Enter a name for your funnel and click Save to continue</p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Artworqq Kevin J Suber Jr
+  </footer>
+
+  <script>
+    const form = document.getElementById('funnel-form');
+    const funnelNameInput = document.getElementById('funnel-name');
+    const submitBtn = document.getElementById('submit-btn');
+    const previewBtn = document.getElementById('preview-btn');
+
+    const savedFunnelName = localStorage.getItem('funnelName');
+    if (savedFunnelName) {
+      funnelNameInput.value = savedFunnelName;
+      previewBtn.disabled = false;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const funnelName = funnelNameInput.value.trim();
+      
+      if (!funnelName) {
+        alert('Please enter a funnel name!');
+        return;
+      }
+
+      localStorage.setItem('funnelName', funnelName);
+      
+      previewBtn.disabled = false;
+      
+      alert(`Funnel "${funnelName}" saved successfully!`);
+    });
+
+    previewBtn.addEventListener('click', () => {
+      const funnelName = localStorage.getItem('funnelName');
+      
+      if (funnelName) {
+        window.location.href = 'preview.html';
+      } else {
+        alert('Please save your funnel first!');
+      }
+    });
+
+    funnelNameInput.addEventListener('input', () => {
+      if (funnelNameInput.value.trim()) {
+        previewBtn.disabled = false;
+      } else {
+        previewBtn.disabled = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
